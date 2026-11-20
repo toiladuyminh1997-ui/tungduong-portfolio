@@ -365,7 +365,8 @@ document.addEventListener("pointerover", (e) => {
 const preview = $("#preview");
 const pImg = $("img", preview), pVid = $("video", preview);
 const pv = { x: 0, y: 0, cur: null };
-if (!isTouch) {
+const HOVER_PREVIEW = false; // tắt khung xem trước khi rê chuột vào các mục
+if (HOVER_PREVIEW && !isTouch) {
   workList.addEventListener("pointerenter", () => preview.classList.add("on"));
   workList.addEventListener("pointerleave", () => {
     preview.classList.remove("on");
@@ -495,19 +496,8 @@ addEventListener("resize", () => openCatId && layoutGrid());
 function setupCards(c) {
   $$(".card", catGrid).forEach((card) => {
     const it = c.items[+card.dataset.i];
+    // Chỉ hiện ảnh poster; bấm vào mới phát video (không tự phát xem trước)
     card.addEventListener("click", () => openLightbox(c.id, it.i));
-    if (isTouch) return;
-    let v = null;
-    card.addEventListener("pointerenter", () => {
-      if (!v) {
-        v = document.createElement("video");
-        v.muted = true; v.loop = true; v.playsInline = true; v.preload = "none";
-        v.src = it.src;
-        $(".card-media", card).appendChild(v);
-      }
-      v.play().then(() => v.classList.add("ready")).catch(() => {});
-    });
-    card.addEventListener("pointerleave", () => { v && v.pause(); });
   });
 }
 
