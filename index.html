@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nguyễn Tùng Dương — Creative Portfolio</title>
+  <meta name="description" content="Creative portfolio of Nguyễn Tùng Dương — Visual, Logo Animation, KV Animation, Video Editing." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%239fdcff' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%239fdcff'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap&subset=vietnamese" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+    { "imports": { "three": "./js/vendor/three.module.js" } }
+  </script>
+</head>
+<body class="is-loading">
+
+  <!-- PRELOADER -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader-top mono"><span>Nguyễn Tùng Dương</span><span>Creative Portfolio</span></div>
+    <div class="loader-count"><span id="loaderNum">0</span><i>%</i></div>
+    <div class="loader-bar"><span id="loaderBar"></span></div>
+    <div class="loader-bottom mono"><span>Loading motion</span><span>©2026</span></div>
+  </div>
+
+  <!-- WEBGL STAGE -->
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <video id="heroVideo" class="hero-video" muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- HUD -->
+  <header class="hud">
+    <a href="#top" class="logo" data-link>
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">TÙNG DƯƠNG</span>
+    </a>
+    <nav class="nav mono">
+      <a href="#work" data-link data-hover>Work</a>
+      <a href="#about" data-link data-hover>About</a>
+      <a href="#contact" data-link data-hover>Contact</a>
+    </nav>
+  </header>
+  <div class="hud-bottom mono">
+    <span>Creative Portfolio ©2026</span>
+    <span class="scroll-cue"><i></i>Scroll</span>
+    <span id="clock">VN --:--</span>
+  </div>
+
+  <main id="page">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <p class="eyebrow mono reveal">[ Motion · Video · 3D ]</p>
+      <h1 class="hero-title" aria-label="Creative Portfolio">
+        <span class="hero-line l1" data-split>CREATIVE</span>
+        <span class="hero-line l2" data-split>PORTFOLIO</span>
+      </h1>
+      <div class="hero-meta">
+        <p class="hero-name reveal"><span class="mono dim">By</span> Nguyễn Tùng Dương</p>
+        <p class="hero-role mono dim reveal">Motion Designer &amp; Video Creator — Vietnam</p>
+      </div>
+      <ul class="hero-cats mono">
+        <li class="reveal"><a href="#visual" data-hover>01 Visual</a></li>
+        <li class="reveal"><a href="#logo" data-hover>02 Logo Animation</a></li>
+        <li class="reveal"><a href="#kv" data-hover>03 KV Animation</a></li>
+        <li class="reveal"><a href="#edit" data-hover>04 Video Editor</a></li>
+      </ul>
+    </section>
+
+    <!-- WORK -->
+    <section class="work" id="work">
+      <div class="sec-head mono reveal">
+        <span>01 / Selected Work</span>
+        <span id="workTotal"></span>
+      </div>
+      <ul class="work-list" id="workList"></ul>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="sec-head mono reveal">
+        <span>02 / About</span>
+        <span>The person behind the frames</span>
+      </div>
+      <div class="about-grid">
+        <figure class="about-photo reveal" id="aboutPhoto" data-cursor="Hello">
+          <img class="ph-base" alt="" />
+          <img class="ph-color" alt="Nguyễn Tùng Dương" />
+          <figcaption class="mono">Nguyễn Tùng Dương<br /><span class="dim">Motion · Video · 3D</span></figcaption>
+        </figure>
+        <div class="about-copy">
+          <h2 class="about-name">
+            <span data-split>NGUYỄN</span>
+            <span data-split>TÙNG DƯƠNG</span>
+          </h2>
+          <p class="about-intro reveal" id="aboutIntro"></p>
+          <p class="about-vi reveal dim" id="aboutVi"></p>
+          <div class="about-cols">
+            <div class="reveal">
+              <h3 class="mono dim">Services</h3>
+              <ol class="services" id="services"></ol>
+            </div>
+            <div class="reveal">
+              <h3 class="mono dim">In numbers</h3>
+              <dl class="stats" id="stats"></dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="sec-head mono reveal">
+        <span>03 / Contact</span>
+        <span>Available for projects</span>
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>LET'S MAKE IT MOVE —&nbsp;</span><span>LET'S MAKE IT MOVE —&nbsp;</span><span>LET'S MAKE IT MOVE —&nbsp;</span><span>LET'S MAKE IT MOVE —&nbsp;</span>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-mail reveal" id="contactMail" data-hover></a>
+        <div class="contact-side mono reveal">
+          <p id="contactPhone"></p>
+          <ul id="socials"></ul>
+        </div>
+      </div>
+      <footer class="foot mono dim">
+        <span>© 2026 Nguyễn Tùng Dương</span>
+        <span>Hero — “ran trai tim 5” · Blender / Cycles</span>
+        <a href="#top" data-link data-hover>Back to top ↑</a>
+      </footer>
+    </section>
+  </main>
+
+  <!-- HOVER PREVIEW (work list) -->
+  <div id="preview" class="preview" aria-hidden="true">
+    <div class="preview-inner">
+      <img alt="" />
+      <video muted loop playsinline preload="none"></video>
+    </div>
+  </div>
+
+  <!-- CATEGORY VIEW -->
+  <section id="cat" class="cat" aria-hidden="true" data-lenis-prevent>
+    <div class="cat-bar mono">
+      <a href="#work" class="cat-back" data-hover>← Back</a>
+      <span id="catIndex"></span>
+    </div>
+    <header class="cat-head">
+      <h2 class="cat-title" id="catTitle"></h2>
+      <div class="cat-info">
+        <p class="mono dim" id="catSub"></p>
+        <p id="catDesc"></p>
+      </div>
+    </header>
+    <div class="cat-grid" id="catGrid"></div>
+    <a class="cat-next" id="catNext" data-hover></a>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Video player">
+    <div class="lb-bar mono">
+      <span id="lbCount"></span>
+      <span id="lbTitle"></span>
+      <button id="lbClose" data-hover aria-label="Close">Close ✕</button>
+    </div>
+    <div class="lb-stage"><video id="lbVideo" controls playsinline></video></div>
+    <button class="lb-nav prev mono" id="lbPrev" data-hover aria-label="Previous">← Prev</button>
+    <button class="lb-nav next mono" id="lbNext" data-hover aria-label="Next">Next →</button>
+  </div>
+
+  <div id="wipe" aria-hidden="true"></div>
+  <div id="cursor" aria-hidden="true"><div class="c-ring"><span></span></div><div class="c-dot"></div></div>
+
+  <script src="js/vendor/lenis.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

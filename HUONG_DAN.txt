@@ -1,0 +1,31 @@
+CREATIVE PORTFOLIO — NGUYỄN TÙNG DƯƠNG
+=======================================
+
+XEM WEB TRÊN MÁY
+  Nhấp đúp XEM_WEB.bat  ->  trình duyệt mở http://localhost:8080
+  (Không mở index.html trực tiếp: trình duyệt chặn module JS + WebGL video khi chạy file://)
+
+SỬA NỘI DUNG
+  js/data.js
+    - PROFILE: giới thiệu, dịch vụ, EMAIL / SĐT / MẠNG XÃ HỘI (đang là chữ mẫu -> cần thay)
+    - CATEGORIES: tên từng dự án trong 4 mục, mô tả mục, "cover" = clip làm preview khi hover
+  Ảnh chân dung: assets/duong.jpg
+
+THÊM VIDEO MỚI
+  1. Chép file .mp4 (H.264) + 1 ảnh .jpg cùng tên vào media/<visual|logo|kv|edit>/
+  2. Thêm 1 dòng vào mục tương ứng trong js/data.js, ví dụ: ["Tên dự án", "kv/24-ten-file"]
+  3. Thêm kích thước vào js/media-meta.js:  "kv/24-ten-file":[1920,1080,15]
+
+HERO 3D
+  media/hero/hero_1080.mp4 (desktop), hero_720.mp4 (mobile), hero_poster.jpg
+  Render từ "ran trai tim 5.blend" (Cycles 160 samples, 240 frame, 24fps), nối vòng lặp bằng crossfade 1s.
+  Khung hình PNG gốc ở render_frames/ (không cần khi đưa web lên mạng).
+
+ĐƯA LÊN MẠNG
+  Upload cả thư mục site/ (trừ render_frames/, server.py, XEM_WEB.bat) lên hosting tĩnh
+  bất kỳ (Netlify, Vercel, Cloudflare Pages, hosting cPanel...).
+  Lưu ý: media/ nặng ~1.1GB. Nên nén lại các video lớn (visual/10-countdown 115MB,
+  kv/19-task-151loop 150MB, visual/04-4 77MB) trước khi upload.
+
+PHÍM TẮT
+  Esc: đóng video / quay lại  ·  ← →: video trước / sau
