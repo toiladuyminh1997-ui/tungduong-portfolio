@@ -18,7 +18,7 @@ THÊM VIDEO MỚI
 
 HERO 3D
   media/hero/hero_1080.mp4 (desktop), hero_720.mp4 (mobile), hero_poster.jpg
-  Render từ "ran trai tim 5.blend" (Cycles 160 samples, 240 frame, 24fps), nối vòng lặp bằng crossfade 1s.
+  Render từ "ran trai tim 5.blend" (Cycles 160 samples, 240 frame, 24fps) — animation tự lặp liền mạch.
   Khung hình PNG gốc ở render_frames/ (không cần khi đưa web lên mạng).
 
 ĐƯA LÊN MẠNG
