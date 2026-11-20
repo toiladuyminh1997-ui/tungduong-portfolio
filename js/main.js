@@ -449,6 +449,7 @@ function renderCat(c) {
   title.innerHTML = `<span data-split>${c.title}</span>`;
   split(title.firstChild);
   title.insertAdjacentHTML("beforeend", `<sup>(${pad2(c.items.length)})</sup>`);
+  stopHoverVideo();
   $("#catSub").textContent = c.sub;
   $("#catDesc").textContent = c.desc;
   catGrid.innerHTML = c.items
@@ -493,11 +494,42 @@ function layoutGrid(force = false) {
 }
 addEventListener("resize", () => openCatId && layoutGrid());
 
+let hoverVid = null, hoverTimer = 0;
+function startHoverVideo(card, it) {
+  stopHoverVideo();
+  const v = document.createElement("video");
+  v.muted = true; v.loop = true; v.playsInline = true; v.preload = "auto";
+  v.src = it.src;
+  $(".card-media", card).appendChild(v);
+  hoverVid = v;
+  v.addEventListener("playing", () => v.classList.add("ready"), { once: true });
+  v.play().catch(() => {});
+}
+function stopHoverVideo() {
+  if (!hoverVid) return;
+  const v = hoverVid;
+  hoverVid = null;
+  v.classList.remove("ready");
+  v.pause();
+  v.removeAttribute("src"); // nhả kết nối tải ngay
+  v.load();
+  setTimeout(() => v.remove(), 400);
+}
+
 function setupCards(c) {
   $$(".card", catGrid).forEach((card) => {
     const it = c.items[+card.dataset.i];
-    // Chỉ hiện ảnh poster; bấm vào mới phát video (không tự phát xem trước)
-    card.addEventListener("click", () => openLightbox(c.id, it.i));
+    card.addEventListener("click", () => { stopHoverVideo(); openLightbox(c.id, it.i); });
+    if (isTouch) return;
+    // Rê chuột: phát video ngay trong ô (mỗi lúc chỉ 1 video để không nghẽn tải)
+    card.addEventListener("pointerenter", () => {
+      clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(() => startHoverVideo(card, it), 150);
+    });
+    card.addEventListener("pointerleave", () => {
+      clearTimeout(hoverTimer);
+      if (hoverVid && hoverVid.parentNode === $(".card-media", card)) stopHoverVideo();
+    });
   });
 }
 
@@ -530,7 +562,7 @@ function closeCat() {
   document.documentElement.style.overflow = "";
   lenis?.start();
   video.play().catch(() => {});
-  $$("video", catGrid).forEach((v) => v.pause());
+  stopHoverVideo();
 }
 
 /* ============================================================

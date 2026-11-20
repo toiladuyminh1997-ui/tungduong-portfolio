@@ -3,7 +3,7 @@ Chạy:  py server.py   rồi mở http://localhost:8080
 """
 import http.server, os, re, socketserver, webbrowser
 
-PORT = 8080
+PORT = int(os.environ.get("PORT", 8080))
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
