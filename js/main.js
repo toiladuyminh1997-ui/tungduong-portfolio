@@ -94,7 +94,9 @@ $$("img", photo).forEach((im) => (im.src = PROFILE.photo));
 const mail = $("#contactMail");
 mail.textContent = PROFILE.email;
 mail.href = `mailto:${PROFILE.email}`;
-$("#contactPhone").textContent = PROFILE.phone;
+$("#contactPhone").innerHTML = `<a href="tel:${PROFILE.phoneLink || PROFILE.phone}" data-hover>${PROFILE.phone}</a>`;
+if (PROFILE.roleLine) $("#heroRole").textContent = PROFILE.roleLine;
+$("#facts").innerHTML = (PROFILE.facts || []).map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
 $("#socials").innerHTML = PROFILE.socials.map((s) => `<li><a href="${s.url}" target="_blank" rel="noopener" data-hover>${s.label} ↗</a></li>`).join("");
 
 /* clock */

@@ -7,18 +7,26 @@ export const PROFILE = {
   name: "Nguyễn Tùng Dương",
   nameShort: "TÙNG DƯƠNG",
   role: "Motion Designer & Video Creator",
+  roleLine: "Motion Designer at Fratoz · Freelance with The Industree",
   location: "Vietnam",
   timezone: "Asia/Ho_Chi_Minh",
   photo: "assets/duong.jpg",
   // Giới thiệu — viết ngôi thứ nhất, sửa tuỳ ý
   intro:
-    "I'm Nguyễn Tùng Dương — a motion designer and video creator. I turn still key visuals into living campaigns: logos that breathe, KV built for giant LED walls and event backdrops, and edits cut for the vertical feed.",
+    "I'm Nguyễn Tùng Dương, a motion designer at Fratoz who also freelances with The Industree. I turn still key visuals into living campaigns: logos that breathe, KV built for giant LED walls and event backdrops, and edits cut for the vertical feed.",
   bioVi:
-    "Mình là Nguyễn Tùng Dương — làm motion design và dựng video. Mình biến những key visual tĩnh thành chiến dịch có nhịp sống: logo chuyển động, KV cho màn LED và backdrop sự kiện, và những bản dựng cho mạng xã hội.",
+    "Mình là Nguyễn Tùng Dương, sinh năm 2001, hiện làm motion designer tại Fratoz và freelance cùng The Industree. Mình biến những key visual tĩnh thành chiến dịch có nhịp sống: logo chuyển động, KV cho màn LED và backdrop sự kiện, và những bản dựng cho mạng xã hội.",
   services: ["Visual / 3D Motion", "Logo Animation", "KV Animation", "LED & Backdrop Content", "Video Editing", "Social Cutdowns"],
-  // TODO: thay bằng thông tin thật
-  email: "your.email@domain.com",
-  phone: "+84 000 000 000",
+  // Thông tin cá nhân (hiện ở mục About)
+  facts: [
+    ["Born", "14.11.2001"],
+    ["Based in", "Vietnam"],
+    ["Currently", "Motion Designer — Fratoz"],
+    ["Freelance", "The Industree"],
+  ],
+  email: "xiaoduong141101@gmail.com",
+  phone: "0985 142 418",
+  phoneLink: "+84985142418",
   socials: [
     { label: "Behance", url: "#" },
     { label: "Instagram", url: "#" },
